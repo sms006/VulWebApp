@@ -2,13 +2,13 @@
 var express = require('express');
 var router = express.Router();
 var https = require('https')
+var check = require('validator').check,
+    sanitize = require('validator').sanitize
 
 /* GET users listing. */
 router.get('/', function (req, res) {
 
-//  86fc9c0271c644b48503f544b4569bda
-    console.log(req.query.q);
-    var q = req.query.q;
+    var q = var str = sanitize(req.query.q).xss(); // use a sanitization library and sanitizse the input
     var link= 'https://newsapi.org/v2/everything?q='+q+'&apiKey=86fc9c0271c644b48503f544b4569bda';
     var prodbody='';
 
