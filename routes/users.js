@@ -8,11 +8,9 @@ var check = require('validator').check,
 /* GET users listing. */
 router.get('/', function (req, res) {
 
-    var q = var str = sanitize(req.query.q).xss(); // use a sanitization library and sanitizse the input
+    var q = sanitize(req.query.q).xss(); // use a sanitization library and sanitizse the input
     var link= 'https://newsapi.org/v2/everything?q='+q+'&apiKey=86fc9c0271c644b48503f544b4569bda';
     var prodbody='';
-
-
 
     https.get(link, function(response){
 
@@ -30,7 +28,8 @@ router.get('/', function (req, res) {
                    }
 
                   res.write('<!DOCTYPE html><html lang="en"><body><p>Here are the results for<br><br>'+q+'<br><br>'+prodobj+'</p></body></html>');
-                });
+                  res.end();   
+             });
             });
           });
 module.exports = router;
