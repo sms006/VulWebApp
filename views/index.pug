@@ -1,0 +1,13 @@
+doctype html
+
+head
+  title Pug
+  script(type='text/javascript').
+h1 Search for latest news
+#container.col
+  p Simply enter a search query
+  form#sf(action='http://localhost:3000/users' method='GET')
+    input#sq(type='text' name='q' hint="What's trump up to?")
+    br
+    input(type='submit' value='Submit')
+  #res
